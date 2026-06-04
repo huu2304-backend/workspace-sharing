@@ -21,6 +21,7 @@ public class User {
     @NotBlank(message = "Name is required")
     private String name;
     @Email(message = "Invalid email format")
+    @NotBlank(message = "Email is required")
     @Column(unique = true)
     private String email;
     @NotBlank(message = "The Password cannot be left blank")
