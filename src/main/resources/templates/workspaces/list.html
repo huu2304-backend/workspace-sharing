@@ -30,7 +30,9 @@
         <td th:text="${workspace.status}">Trạng thái</td>
         <td>
             <a th:href="@{/workspaces/edit/{id}(id=${workspace.id})}">Sửa</a>
-            <a th:href="@{/workspaces/delete/{id}(id=${workspace.id})}">Xóa</a>
+            <form th:action="@{/workspaces/delete/{id}(id=${workspace.id})}" method="post" style="display:inline;">
+                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa phòng này không?');">Xóa</button>
+            </form>
         </td>
     </tr>
     </tbody>

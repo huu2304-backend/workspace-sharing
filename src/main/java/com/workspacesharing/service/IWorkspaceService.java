@@ -7,6 +7,7 @@ import com.workspacesharing.model.User;
 import com.workspacesharing.model.Workspace;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IWorkspaceService {
     void addWorkspace(Workspace workspace);
@@ -20,5 +21,6 @@ public interface IWorkspaceService {
     List<Workspace> findByStatus(WorkspaceStatus status);
 
     List<Workspace> findByType(WorkspaceType type);
+    Optional<Workspace> findById(Long id);
 
 }

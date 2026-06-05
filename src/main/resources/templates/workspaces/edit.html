@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Thêm phòng mới</h1>
+
+<form th:action="@{/workspaces/edit/{id}(id=${workspace.id})}" th:object="${workspace}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <lable>Tên phòng:</lable>
+    <input type="text" th:field="*{name}"/><br>
+    <label>Mô tả: </label>
+    <input type="text" th:field="*{description}"/><br>
+    <label>Sức chứa</label>
+    <input type="text" th:field="*{capacity}"/><br>
+    <label>Giá</label>
+    <input type="text" th:field="*{price}"/><br>
+    <label>Loại phòng</label>
+    <select th:field="*{type}">
+        <option th:each="type: ${types}"
+                th:value="${type}"
+                th:text="${type}">
+        </option>
+    </select>
+    <br>
+    <label>Trạng thái</label>
+    <select th:field="*{status}">
+        <option th:each="type: ${statuses}"
+                th:value="${type}"
+                th:text="${type}">
+        </option>
+    </select>
+    <br>
+    <button type="submit">Thêm</button><br>
+
+</form>
+</body>
+</html>
