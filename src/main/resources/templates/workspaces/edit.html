@@ -14,9 +14,9 @@
     <label>Mô tả: </label>
     <input type="text" th:field="*{description}"/><br>
     <label>Sức chứa</label>
-    <input type="text" th:field="*{capacity}"/><br>
+    <input type="number" th:field="*{capacity}"/><br>
     <label>Giá</label>
-    <input type="text" th:field="*{price}"/><br>
+    <input type="number" th:field="*{price}"/><br>
     <label>Loại phòng</label>
     <select th:field="*{type}">
         <option th:each="type: ${types}"
