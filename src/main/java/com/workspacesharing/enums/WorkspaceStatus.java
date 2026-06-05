@@ -4,4 +4,5 @@ public enum WorkspaceStatus {
     available,
     booked,
     maintenance,
+
 }

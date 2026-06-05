@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Workspaces</title>
+</head>
+<body>
+<h1>List Workspaces</h1>
+<a th:href="@{/workspaces/add}">Thêm phòng mới</a>
+<table>
+    <thead>
+    <tr>
+        <th>Tên phòng</th>
+        <th>Mô tả</th>
+        <th>Sức chứa</th>
+        <th>Giá</th>
+        <th>Loại</th>
+        <th>Trạng thái</th>
+        <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="workspace :${workspaces}">
+        <td th:text="${workspace.name}">Tên phòng</td>
+        <td th:text="${workspace.description}">Mô tả</td>
+        <td th:text="${workspace.capacity}">Sức chứa</td>
+        <td th:text="${workspace.price}">Giá</td>
+        <td th:text="${workspace.type}">Loại phòng</td>
+        <td th:text="${workspace.status}">Trạng thái</td>
+        <td>
+            <a th:href="@{/workspaces/edit/{id}(id=${workspace.id})}">Sửa</a>
+            <a th:href="@{/workspaces/delete/{id}(id=${workspace.id})}">Xóa</a>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>

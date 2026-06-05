@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface WorkspaceRepository extends JpaRepository<Workspace, Long> {
     List<Workspace> findByStatus(WorkspaceStatus status);
-    List<Workspace> findByType(WorkspaceType type);
+    List<Workspace> findByType(WorkspaceType  type);
 }
