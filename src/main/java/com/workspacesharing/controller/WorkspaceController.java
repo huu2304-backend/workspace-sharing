@@ -30,7 +30,7 @@ public class WorkspaceController {
     @GetMapping("/list")
     public String listWorkspace(Model model) {
         model.addAttribute("workspaces", iWorkspaceService.findAllWorkspaces());
-        return "/workspaces/list";
+        return "workspaces/list";
     }
 
     @GetMapping("/edit/{id}")
@@ -39,16 +39,16 @@ public class WorkspaceController {
         model.addAttribute("workspace", workspace.get());
         model.addAttribute("statuses", WorkspaceStatus.values());
         model.addAttribute("types", WorkspaceType.values());
-        return "/workspaces/edit";
+        return "workspaces/edit";
     }
     @PostMapping("/edit/{id}")
     public String editWorkspace(@PathVariable("id") Long id, @ModelAttribute Workspace workspace) {
         iWorkspaceService.updateWorkspace(workspace);
-        return "redirect:/workspaces/list";
+        return "redirect:workspaces/list";
     }
     @PostMapping("/delete/{id}")
     public String deleteWorkspace(@PathVariable("id") Long id) {
         iWorkspaceService.deleteWorkspace(id);
-        return "redirect:/workspaces/list";
+        return "redirect:workspaces/list";
     }
 }

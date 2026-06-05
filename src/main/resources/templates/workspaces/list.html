@@ -5,38 +5,52 @@
     <title>List Workspaces</title>
 </head>
 <body>
-<h1>List Workspaces</h1>
-<a th:href="@{/workspaces/add}">Thêm phòng mới</a>
-<table>
-    <thead>
-    <tr>
-        <th>Tên phòng</th>
-        <th>Mô tả</th>
-        <th>Sức chứa</th>
-        <th>Giá</th>
-        <th>Loại</th>
-        <th>Trạng thái</th>
-        <th>Hành động</th>
-    </tr>
-    </thead>
-    <tbody>
 
-    <tr th:each="workspace :${workspaces}">
-        <td th:text="${workspace.name}">Tên phòng</td>
-        <td th:text="${workspace.description}">Mô tả</td>
-        <td th:text="${workspace.capacity}">Sức chứa</td>
-        <td th:text="${workspace.price}">Giá</td>
-        <td th:text="${workspace.type}">Loại phòng</td>
-        <td th:text="${workspace.status}">Trạng thái</td>
-        <td>
-            <a th:href="@{/workspaces/edit/{id}(id=${workspace.id})}">Sửa</a>
-            <form th:action="@{/workspaces/delete/{id}(id=${workspace.id})}" method="post" style="display:inline;">
-                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa phòng này không?');">Xóa</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
+<nav style="display:flex; justify-content:space-between; align-items:center; padding:12px 20px; border-bottom:1px solid #ddd;">
+    <a href="/workspaces/list" style="font-weight:500; text-decoration:none;">🏢 Workspace</a>
+    <div style="display:flex; align-items:center; gap:12px;">
+        <form th:action="@{/logout}" method="post" style="margin:0;">
+            <button type="submit">Đăng xuất</button>
+        </form>
+    </div>
+</nav>
 
-</table>
+<div style="padding:20px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h1 style="margin:0;">Danh sách phòng</h1>
+        <a th:href="@{/workspaces/add}">+ Thêm phòng mới</a>
+    </div>
+
+    <table style="width:100%; border-collapse:collapse;">
+        <thead>
+        <tr style="background:#f5f5f5;">
+            <th style="padding:10px; text-align:left; border:1px solid #ddd;">Tên phòng</th>
+            <th style="padding:10px; text-align:left; border:1px solid #ddd;">Mô tả</th>
+            <th style="padding:10px; text-align:left; border:1px solid #ddd;">Sức chứa</th>
+            <th style="padding:10px; text-align:left; border:1px solid #ddd;">Giá</th>
+            <th style="padding:10px; text-align:left; border:1px solid #ddd;">Loại</th>
+            <th style="padding:10px; text-align:left; border:1px solid #ddd;">Trạng thái</th>
+            <th style="padding:10px; text-align:left; border:1px solid #ddd;">Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="workspace : ${workspaces}">
+            <td style="padding:10px; border:1px solid #ddd;" th:text="${workspace.name}"></td>
+            <td style="padding:10px; border:1px solid #ddd;" th:text="${workspace.description}"></td>
+            <td style="padding:10px; border:1px solid #ddd;" th:text="${workspace.capacity}"></td>
+            <td style="padding:10px; border:1px solid #ddd;" th:text="${workspace.price}"></td>
+            <td style="padding:10px; border:1px solid #ddd;" th:text="${workspace.type}"></td>
+            <td style="padding:10px; border:1px solid #ddd;" th:text="${workspace.status}"></td>
+            <td style="padding:10px; border:1px solid #ddd;">
+                <a th:href="@{/workspaces/edit/{id}(id=${workspace.id})}">Sửa</a>
+                <form th:action="@{/workspaces/delete/{id}(id=${workspace.id})}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

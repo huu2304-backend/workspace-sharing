@@ -24,7 +24,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/register", "/login").permitAll()
                         .requestMatchers("/workspaces/add/**", "/workspaces/edit/**",
-                                "/workspaces/delete/**").hasRole("ADMIN")
+                                "/workspaces/delete/**", "/bookings/list",
+                                "/bookings/confirm/**", "/bookings/cancel/**").hasRole("ADMIN")
+                        .requestMatchers("/bookings/add", "/bookings/my-bookings").hasRole("CUSTOMER")
+                        .requestMatchers("/workspaces/list").hasAnyRole("ADMIN", "CUSTOMER")
                         .requestMatchers("/bookings/**").hasAnyRole("ADMIN", "CUSTOMER")
                         .anyRequest().authenticated()
                 )
@@ -45,10 +48,4 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
-        provider.setPasswordEncoder(passwordEncoder());
-        return provider;
-    }
 }
