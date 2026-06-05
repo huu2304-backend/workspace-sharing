@@ -25,7 +25,6 @@ public class User {
     @Column(unique = true)
     private String email;
     @NotBlank(message = "The Password cannot be left blank")
-    @Size(min = 8, max = 32, message = "The password must be between 8 and 32 characters")
     @Pattern(
             regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).*$",
             message = "\n" +
