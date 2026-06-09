@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class UserController {
     private final IUserService iUserService;
+
     @GetMapping("/register")
     public String registerPage(Model model) {
         model.addAttribute("user", new User());

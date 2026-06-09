@@ -20,7 +20,7 @@ public class UserServiceImpl implements IUserService {
     public User register(User user) {
         //check email da ton tai chua
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new RuntimeException("Email already exists");
+                throw new RuntimeException("Email already exists");
         }
 //ma hoa password
         user.setPassword(passwordEncoder.encode(user.getPassword()));

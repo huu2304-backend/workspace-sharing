@@ -1,12 +1,10 @@
 package com.workspacesharing.service;
-
 import com.workspacesharing.enums.WorkspaceStatus;
 import com.workspacesharing.enums.WorkspaceType;
 import com.workspacesharing.model.Workspace;
 import com.workspacesharing.repository.WorkspaceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
